@@ -1,4 +1,5 @@
-*/__pycache___/
+**/__pycache___/
 .idea/
 *.iml
 venv/
+*.py[cod]

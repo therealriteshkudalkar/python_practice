@@ -6,7 +6,6 @@ class Solution:
     def search_insert(nums: List[int], target: int) -> int:
         lb = 0
         ub = len(nums) - 1
-        mid = 0
         while lb < ub:
             mid = int((lb + ub) / 2)
             if nums[mid] < target:
@@ -17,8 +16,11 @@ class Solution:
                 return mid
 
         if ub == lb:
-            if ub == len(nums) - 1:
-                return ub + 1 if target > nums[ub] else ub - 1
-            elif ub == 0:
-                return ub if target < nums[ub] else ub + 1
-        return mid
+            return ub + 1 if target > nums[ub] else ub
+
+        # lb > ub
+        if lb >= 0:
+            return lb if target < nums[lb] else lb + 1
+        if ub < len(nums):
+            return ub + 1 if target > nums[ub] else ub
+        return 0
